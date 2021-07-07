@@ -1,33 +1,31 @@
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
-import Games from "./components/pages/Games";
-import Location from "./components/pages/Location";
-import Pokemons from "./components/pages/Pokemons";
+import Home from "./components/Pages/Home";
+import Games from "./components/Pages/Games";
+import Locations from "./components/Pages/Locations";
+import Pokemons from "./components/Pages/Pokemons";
+import GameDetail from "./components/Pages/GameDetail";
+import LocationDetail from "./components/Pages/LocationDetail";
+import PokemonDetail from "./components/Pages/PokemonDetail";
+import NavBar from "./components/NavBar";
+import { InfoProvider } from "./Context/Context";
 
 function App() {
   return (
-    <BrowserRouter>
-      <switch>
-        <Route path="/games" component={Games} />
-        <Route path="/location" component={Location} />
-        <Route path="/pokemons" component={Pokemons} />
-      </switch>
-      <div className="container">
-        <nav className="navigationBar">
-          <ul>
-            <li>
-              <a href="/games">Games</a>
-            </li>
-            <li>
-              <a href="/locations">Locations</a>
-            </li>
-            <li>
-              <a href="/pokemons">Pokemons</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </BrowserRouter>
+    <InfoProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/games" component={Games} exact />
+          <Route path="/locations" component={Locations} exact />
+          <Route path="/pokemons" component={Pokemons} exact />
+          <Route path="/games/:version" component={GameDetail} exact />
+          <Route path="/locations/:info" component={LocationDetail} exact />
+          <Route path="/pokemons/:id" component={PokemonDetail} exact />
+        </Switch>
+      </BrowserRouter>
+    </InfoProvider>
   );
 }
 

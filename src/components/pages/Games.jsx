@@ -1,3 +1,6 @@
-const Games = () => <h1>Games</h1>;
+import GameDetail from "./GameDetail";
+const Games = () => {
+  return <GameDetail />;
+};
 
 export default Games;
