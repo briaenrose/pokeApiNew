@@ -1,42 +1,50 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useContext } from "react";
-import { GetContext } from "../../Context/Context";
+import { useEffect, useState } from "react";
+import Pagination from "../Pagination";
 
 const LocationDetail = () => {
-  const { info, toggle } = useContext(GetContext);
+  //const { info, toggle } = useContext(GetContext);
+  const [data, setData] = useState(null);
   const { id } = useParams();
   console.log(id);
-  const getLocation = async () => {
+  const getLocation = async (
+    url = `https://pokeapi.co/api/v2/location/?limit=10&offset=10`
+  ) => {
     try {
-      const RES = await fetch(
-        `https://pokeapi.co/api/v2/location/?limit=10&offset=10`
-      );
+      const RES = await fetch(url);
       const data = await RES.json();
-      toggle(data.results);
-
-      console.log(info);
+      setData(data);
+      console.log(data);
+      console.log(id);
     } catch (error) {
       console.error(error);
     }
   };
+  const handlePrevious = () => {
+    const url = data.previous;
+    getLocation(url);
+  };
 
+  const handleNext = () => {
+    const url = data.next;
+    getLocation(url);
+  };
   useEffect(() => {
     getLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const info2 = info[0];
   return (
     <>
       <h2>Locations</h2>
       <ul>
-        {info.length > 0
-          ? info.map((item) => {
+        {data && data.results.length > 0
+          ? data.results.map((item) => {
               return <li>{item.name}</li>;
             })
           : null}
       </ul>
+      <Pagination handlePrevious={handlePrevious} handleNext={handleNext} />
     </>
   );
 };
