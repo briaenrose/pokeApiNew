@@ -9,7 +9,9 @@ const GameDetail = () => {
   console.log(version);
   const getGame = async () => {
     try {
-      const RES = await fetch(`https://pokeapi.co/api/v2/version-group/`);
+      const RES = await fetch(
+        `https://pokeapi.co/api/v2/version-group/?limit=10&offset=10`
+      );
       const data = await RES.json();
       toggle(data.results);
 
@@ -27,7 +29,7 @@ const GameDetail = () => {
   const info2 = info[0];
   return (
     <>
-      <h2>games</h2>
+      <h2>Games</h2>
       <ul>
         {info.length > 0
           ? info.map((item) => {

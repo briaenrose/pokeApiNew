@@ -1,3 +1,6 @@
-const Locations = () => <h1>Locations</h1>;
+import LocationDetail from "./LocationDetail";
+const Locations = () => {
+  return <LocationDetail />;
+};
 
 export default Locations;
