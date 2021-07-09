@@ -8,6 +8,7 @@ import GameDetail from "./components/Pages/GameDetail";
 import LocationDetail from "./components/Pages/LocationDetail";
 import PokemonDetail from "./components/Pages/PokemonDetail";
 import NavBar from "./components/NavBar";
+import SearchBar from "./components/SearchBar";
 import { InfoProvider } from "./Context/Context";
 
 function App() {
@@ -15,13 +16,14 @@ function App() {
     <InfoProvider>
       <BrowserRouter>
         <NavBar />
+        <SearchBar />
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/games" component={Games} exact />
           <Route path="/locations" component={Locations} exact />
           <Route path="/pokemons" component={Pokemons} exact />
-          <Route path="/games/:version" component={GameDetail} exact />
-          <Route path="/locations/:info" component={LocationDetail} exact />
+          <Route path="/games/:id" component={GameDetail} exact />
+          <Route path="/locations/:id" component={LocationDetail} exact />
           <Route path="/pokemons/:id" component={PokemonDetail} exact />
         </Switch>
       </BrowserRouter>

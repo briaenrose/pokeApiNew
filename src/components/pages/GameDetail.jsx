@@ -11,8 +11,8 @@ const GameDetail = () => {
     url = `https://pokeapi.co/api/v2/version/?limit=10&offset=10`
   ) => {
     try {
-      const RES = await fetch(url);
-      const data = await RES.json();
+      const response = await fetch(url);
+      const data = await response.json();
       setData(data);
       console.log(data);
       console.log(id);
@@ -34,10 +34,11 @@ const GameDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  //const urlinfo
   return (
     <>
       <h2>Games</h2>
-      <ul>
+      <ul className="Card">
         {data && data.results.length > 0
           ? data.results.map((item) => {
               return <li>{item.name}</li>;
