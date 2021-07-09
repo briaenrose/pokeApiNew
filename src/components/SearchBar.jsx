@@ -1,5 +1,5 @@
 import React from "react";
-import { searchGame, searchItem, searchLocation, searchPokemon } from "../api";
+import { searchGame, searchLocation, searchPokemon } from "../api";
 const { useState } = React;
 
 const SearchBar = () => {
