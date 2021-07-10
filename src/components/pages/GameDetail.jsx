@@ -37,14 +37,17 @@ const GameDetail = () => {
   //const urlinfo
   return (
     <>
-      <h2>Games</h2>
-      <ul className="Card">
-        {data && data.results.length > 0
-          ? data.results.map((item) => {
-              return <li>{item.name}</li>;
-            })
-          : null}
-      </ul>
+      <div>
+        <h2>Games</h2>
+        <ul className="Card">
+          {data && data.results.length > 0
+            ? data.results.map((item) => {
+                return <li>{item.name}</li>;
+              })
+            : null}
+        </ul>
+      </div>
+
       <Pagination handlePrevious={handlePrevious} handleNext={handleNext} />
     </>
   );

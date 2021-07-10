@@ -22,8 +22,10 @@ const SearchBar = () => {
       <div className="searchBar">
         <input placeholder="I'm looking for..." onChange={onChange} />
       </div>
-      <div className="searchBar-button">
-        <button onClick={onClick}>Search</button>
+      <div>
+        <button className="button" onClick={onClick}>
+          <p>Search</p>
+        </button>
       </div>
     </div>
   );

@@ -4,9 +4,11 @@ const Pagination = (props) => {
   const { handlePrevious, handleNext } = props;
   return (
     <div>
-      <button onClick={handlePrevious}>Prev</button>
-      <button id="Next" onClick={handleNext}>
-        Next
+      <button className="button" onClick={handlePrevious}>
+        <p>Prev</p>
+      </button>
+      <button className="button" id="Next" onClick={handleNext}>
+        <p>Next</p>
       </button>
     </div>
   );
