@@ -18,11 +18,11 @@ const SearchBar = () => {
     console.log(gamedata);
   };
   return (
-    <div>
-      <div>
+    <div className="searchBar-wrapper">
+      <div className="searchBar">
         <input placeholder="I'm looking for..." onChange={onChange} />
       </div>
-      <div>
+      <div className="searchBar-button">
         <button onClick={onClick}>Search</button>
       </div>
     </div>
