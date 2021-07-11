@@ -4,7 +4,9 @@ const { useState } = React;
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
-
+  //const [game] = useState();
+  //const [location, setLocation] = useState();
+  //const [pokemon, setPokemon] = useState();
   const onChange = (evt) => {
     setSearch(evt.target.value);
   };

@@ -12,7 +12,6 @@ export const InfoProvider = (props) => {
   const [page, setPage] = useState(1);
   const [current, setCurrent] = useState("");
   const [param, setParam] = useState("");
-  const [filter, setFilter] = useState("");
 
   const { children } = props;
 
@@ -29,8 +28,6 @@ export const InfoProvider = (props) => {
     setCurrent,
     param,
     setParam,
-    filter,
-    setFilter,
   };
 
   return <GetContext.Provider value={context}>{children}</GetContext.Provider>;

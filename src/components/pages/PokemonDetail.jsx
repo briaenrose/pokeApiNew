@@ -11,8 +11,8 @@ const PokemonDetail = () => {
     url = `https://pokeapi.co/api/v2/pokemon/?limit=10&offset=10`
   ) => {
     try {
-      const response = await fetch(url);
-      const data = await response.json();
+      const RES = await fetch(url);
+      const data = await RES.json();
       setData(data);
       console.log(data);
       console.log(id);
@@ -31,13 +31,12 @@ const PokemonDetail = () => {
   };
   useEffect(() => {
     getPokemon();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <h2>Pokemons</h2>
-      <ul className="Card">
+      <ul>
         {data && data.results.length > 0
           ? data.results.map((item) => {
               return <li>{item.name}</li>;

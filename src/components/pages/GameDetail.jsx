@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import Pagination from "../Pagination";
 
 const GameDetail = () => {
-  //const { info, toggle } = useContext(GetContext);
   const [data, setData] = useState(null);
+  const [counter, setCounter] = useState(0);
   const { id } = useParams();
   console.log(id);
   const getGame = async (
@@ -12,14 +12,17 @@ const GameDetail = () => {
   ) => {
     try {
       const response = await fetch(url);
-      const data = await response.json();
-      setData(data);
-      console.log(data);
+      const info = await response.json();
+      setData(info);
+      //const dataurl = info.results.counter;
+      //console.log(dataurl);
+      console.log(info);
       console.log(id);
     } catch (error) {
       console.error(error);
     }
   };
+
   const handlePrevious = () => {
     const url = data.previous;
     getGame(url);
@@ -31,21 +34,30 @@ const GameDetail = () => {
   };
   useEffect(() => {
     getGame();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data]);
 
-  //const urlinfo
   return (
     <>
       <div>
         <h2>Games</h2>
-        <ul className="Card">
+        <div className="Card-grid">
           {data && data.results.length > 0
             ? data.results.map((item) => {
-                return <li>{item.name}</li>;
+                return (
+                  <ul>
+                    <li className="Card-grid">
+                      <ul>
+                        <li className="Card-grid">
+                          <h3>{item.name}</h3>
+                        </li>
+                        <li>{item.url}</li>
+                      </ul>
+                    </li>
+                  </ul>
+                );
               })
             : null}
-        </ul>
+        </div>
       </div>
 
       <Pagination handlePrevious={handlePrevious} handleNext={handleNext} />
@@ -54,3 +66,26 @@ const GameDetail = () => {
 };
 
 export default GameDetail;
+
+/*
+const GamesList = (props) => {
+  return (
+    <>
+      <ul className="game-grid">
+        <li className="game-content">1</li>
+        <li className="game-content">2</li>
+        <li className="game-content">3</li>
+        <li className="game-content">4</li>
+        <li className="game-content">5</li>
+        <li className="game-content">6</li>
+        <li className="game-content">7</li>
+        <li className="game-content">8</li>
+        <li className="game-content">9</li>
+        <li className="game-content">10</li>
+      </ul>
+    </>
+  );
+};
+
+export default GamesList
+*/
