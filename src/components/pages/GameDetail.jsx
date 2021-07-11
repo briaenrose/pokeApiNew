@@ -4,7 +4,6 @@ import Pagination from "../Pagination";
 
 const GameDetail = () => {
   const [data, setData] = useState(null);
-  const [counter, setCounter] = useState(0);
   const { id } = useParams();
   console.log(id);
   const getGame = async (
@@ -34,20 +33,20 @@ const GameDetail = () => {
   };
   useEffect(() => {
     getGame();
-  }, [data]);
+  }, []);
 
   return (
     <>
       <div>
         <h2>Games</h2>
-        <div className="Card-grid">
+        <div>
           {data && data.results.length > 0
             ? data.results.map((item) => {
                 return (
                   <ul>
                     <li className="Card-grid">
-                      <ul>
-                        <li className="Card-grid">
+                      <ul className="Card-grid">
+                        <li>
                           <h3>{item.name}</h3>
                         </li>
                         <li>{item.url}</li>

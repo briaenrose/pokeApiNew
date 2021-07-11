@@ -35,14 +35,28 @@ const PokemonDetail = () => {
 
   return (
     <>
-      <h2>Pokemons</h2>
-      <ul>
-        {data && data.results.length > 0
-          ? data.results.map((item) => {
-              return <li>{item.name}</li>;
-            })
-          : null}
-      </ul>
+      <div>
+        <h2>Pokemons</h2>
+        <div>
+          {data && data.results.length > 0
+            ? data.results.map((item) => {
+                return (
+                  <ul>
+                    <li className="Card-grid">
+                      <ul className="Card-grid">
+                        <li>
+                          <h3>{item.name}</h3>
+                        </li>
+                        <li>{item.url}</li>
+                      </ul>
+                    </li>
+                  </ul>
+                );
+              })
+            : null}
+        </div>
+      </div>
+
       <Pagination handlePrevious={handlePrevious} handleNext={handleNext} />
     </>
   );
