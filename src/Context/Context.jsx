@@ -10,7 +10,7 @@ export const GetContext = createContext(initialState);
 export const InfoProvider = (props) => {
   const [info, setInfo] = useState({});
   const [page, setPage] = useState(1);
-  const [current, setCurrent] = useState("");
+  const [detail, setDetail] = useState("");
   const [param, setParam] = useState("");
 
   const { children } = props;
@@ -24,8 +24,8 @@ export const InfoProvider = (props) => {
     toggle,
     page,
     setPage,
-    current,
-    setCurrent,
+    detail,
+    setDetail,
     param,
     setParam,
   };
